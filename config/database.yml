@@ -15,15 +15,24 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+ adapter: postgresql
+ encoding: utf8
+ database: desafiolatam
+ username: trex
+ password: desafiolatam
+ host: desafiolatam.cvzot8k71mh1.us-west-2.rds.amazonaws.com
+ port: 5432
 
 development:
-  <<: *default
-  database: shoptrex_development
+ <<: *default 
+ adapter: postgresql
+ encoding: utf8
+ database: desafiolatam
+ username: trex
+ password: desafiolatam
+ host: desafiolatam.cvzot8k71mh1.us-west-2.rds.amazonaws.com
+ port: 5432
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -56,8 +65,8 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: shoptrex_test
+ <<: *default
+ database: shoptrex_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,7 +89,10 @@ test:
 #
 production:
  <<: *default
- database: desafiolatam-production
- username: <%= ENV["aws_rds_username"] %>
- password: <%= ENV["aws_rds_password"] %>
- host: <%= ENV["aws_rds_host"] %>
+ adapter: postgresql
+ encoding: utf8
+ database: desafiolatam
+ username: trex
+ password: desafiolatam
+ host: desafiolatam.cvzot8k71mh1.us-west-2.rds.amazonaws.com
+ port: 5432
